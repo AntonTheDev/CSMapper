@@ -19,7 +19,7 @@ static NSString * const CSMappingParentKey = @"__parent__";
 static NSString * const CSMappingKeyKey = @"key";
 static NSString * const CSMappingClassKey = @"type";
 static NSString * const CSMappingGroupsKey = @"groups";
-static NSString * const CSMappingArraySubTypeKey = @"array_subtype";
+static NSString * const CSMappingCollectionSubTypeKey = @"collection_subtype";
 static NSString * const CSMappingMapperKey = @"mapper";
 static NSString * const CSMappingDefaultKey = @"default";
 
@@ -165,22 +165,31 @@ static NSString * const CSMappingDefaultKey = @"default";
 			}
             
             //check to see if there is a type for the objects in an array
-            arraySubTypeValue =  [propertyMapping objectForKey:CSMappingArraySubTypeKey];
-        
-            if ([inputValue isKindOfClass:[NSArray class]] && arraySubTypeValue) {
+            arraySubTypeValue =  [propertyMapping objectForKey:CSMappingCollectionSubTypeKey];
+            NSLog(@"SUBType %@", arraySubTypeValue);
+            if (arraySubTypeValue) {
                 forcedClassString = arraySubTypeValue;
                 forcedClass = NSClassFromString(arraySubTypeValue);
                 
                 NSMutableArray *newSubObjectArray = [NSMutableArray new];
-                
-                for (id subobjectDict in inputValue) {
-                    id newValue = [[forcedClass alloc] init];
-                    [newValue mapAttributesWithDictionary:subobjectDict];
-                    [newSubObjectArray addObject:newValue];
+              
+                if ([inputValue isKindOfClass:[NSArray class]] ){
+                    for (id subobjectDict in inputValue) {
+                        id newValue = [[forcedClass alloc] init];
+                        [newValue mapAttributesWithDictionary:subobjectDict];
+                        [newSubObjectArray addObject:newValue];
+                    }
+                } else if ([inputValue isKindOfClass:[NSDictionary class]] ){
+                    for (id subobjectDict in [inputValue allValues]) {
+                        id newValue = [[forcedClass alloc] init];
+                        [newValue mapAttributesWithDictionary:subobjectDict];
+                        [newSubObjectArray addObject:newValue];
+                    }
                 }
+                
                 outputValue = newSubObjectArray;
             }
-
+         
 			if (mapperClass && mapperClass) {
 				outputValue = [(id<CSMapper>)mapperClass transformValue:inputValue];
 			}
@@ -255,7 +264,6 @@ static NSMutableDictionary *mappingCache = NULL;
 		return nil;
 	}
 }
-
 
 /**
  Converts an object into an NSString

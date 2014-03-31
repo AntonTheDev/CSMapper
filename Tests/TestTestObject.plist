@@ -97,7 +97,16 @@
 		<string>NSArray</string>
 		<key>key</key>
 		<string>test_subarray</string>
-		<key>array_subtype</key>
+		<key>collection_subtype</key>
+		<string>TestTestSubtype</string>
+	</dict>
+	<key>subDictionaryValue</key>
+	<dict>
+		<key>type</key>
+		<string>NSDictionary</string>
+		<key>key</key>
+		<string>test_subdictionary</string>
+		<key>collection_subtype</key>
 		<string>TestTestSubtype</string>
 	</dict>
 </dict>
