@@ -10,29 +10,29 @@
 	<string>CSMapperTestApp</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>58B62EAD-450F-433B-9448-4E0A05497FBF</key>
-		<string>ssh://github.com/marcammann/CSMapper.git</string>
+		<key>7B4F58B70F1D66ED172BF588CBF60BF38A1FA730</key>
+		<string>github.com:AntonTheDev/CSMapper.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>CSMapperTestApp/CSMapperTestApp.xcodeproj/project.xcworkspace</string>
+	<string>CSMapperTestApp/CSMapperTestApp.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>58B62EAD-450F-433B-9448-4E0A05497FBF</key>
+		<key>7B4F58B70F1D66ED172BF588CBF60BF38A1FA730</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/marcammann/CSMapper.git</string>
+	<string>github.com:AntonTheDev/CSMapper.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>58B62EAD-450F-433B-9448-4E0A05497FBF</string>
+	<string>7B4F58B70F1D66ED172BF588CBF60BF38A1FA730</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>58B62EAD-450F-433B-9448-4E0A05497FBF</string>
+			<string>7B4F58B70F1D66ED172BF588CBF60BF38A1FA730</string>
 			<key>IDESourceControlWCCName</key>
 			<string>CSMapper</string>
 		</dict>

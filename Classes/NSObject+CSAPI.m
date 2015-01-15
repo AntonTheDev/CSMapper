@@ -155,7 +155,7 @@ static NSString * const CSMappingDefaultKey = @"default";
 				selector = NSSelectorFromString([NSString stringWithFormat:@"%@Value", forcedClass]);
 				if ([inputValue respondsToSelector:selector]) {
 					// Try to use the built in conversion features for known types
-					outputValue = objc_msgSend(inputValue, selector);
+					outputValue = ((id (*)(id, SEL))objc_msgSend)(inputValue, selector);
 				} else {
 					// Try to map unknown type with same technique.
 					id newValue = [[forcedClass alloc] init];
