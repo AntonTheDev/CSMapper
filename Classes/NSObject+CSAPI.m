@@ -19,6 +19,7 @@ static NSString * const CSMappingParentKey = @"__parent__";
 static NSString * const CSMappingKeyKey = @"key";
 static NSString * const CSMappingClassKey = @"type";
 static NSString * const CSMappingGroupsKey = @"groups";
+static NSString * const CSMappingArraySubTypeKey = @"array_subtype";
 static NSString * const CSMappingCollectionSubTypeKey = @"collection_subtype";
 static NSString * const CSMappingMapperKey = @"mapper";
 static NSString * const CSMappingDefaultKey = @"default";
@@ -166,6 +167,13 @@ static NSString * const CSMappingDefaultKey = @"default";
             
             //check to see if there is a type for the objects in an array
             arraySubTypeValue =  [propertyMapping objectForKey:CSMappingCollectionSubTypeKey];
+           
+            if(!arraySubTypeValue)
+            {
+                // Backwards compatibility prior to the addition of dictionary type mapping
+                arraySubTypeValue =  [propertyMapping objectForKey:CSMappingArraySubTypeKey];
+            }
+            
             if (arraySubTypeValue) {
                 forcedClassString = arraySubTypeValue;
                 forcedClass = NSClassFromString(arraySubTypeValue);
