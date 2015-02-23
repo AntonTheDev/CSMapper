@@ -166,7 +166,6 @@ static NSString * const CSMappingDefaultKey = @"default";
             
             //check to see if there is a type for the objects in an array
             arraySubTypeValue =  [propertyMapping objectForKey:CSMappingCollectionSubTypeKey];
-            NSLog(@"SUBType %@", arraySubTypeValue);
             if (arraySubTypeValue) {
                 forcedClassString = arraySubTypeValue;
                 forcedClass = NSClassFromString(arraySubTypeValue);
