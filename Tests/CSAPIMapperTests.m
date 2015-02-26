@@ -53,6 +53,7 @@
 @property (nonatomic, strong) NSString *subSubValue;
 @property (nonatomic, strong) NSArray *subArrayValue;
 @property (nonatomic, strong) NSArray *subDictionaryValue;
+@property (nonatomic, strong) NSArray *subArrayLegacyValue;
 @end
 
 
@@ -218,9 +219,9 @@
 
 	[o mapAttributesWithDictionary:@{ @"test_subdictionary" :  @{@"Object1" : @{@"test_trivial" : @"Test1"}, @"Object2" : @{@"test_trivial" : @"Test2"}, @"Object3" : @{@"test_trivial" : @"Test3"}}}];
 
-    STAssertEqualObjects([[o.subDictionaryValue objectAtIndex:0] testTrivial], @"Test1", nil);
-    STAssertEqualObjects([[o.subDictionaryValue objectAtIndex:1] testTrivial], @"Test2", nil);
-    STAssertEqualObjects([[o.subDictionaryValue objectAtIndex:2] testTrivial], @"Test3", nil);
+    STAssertEqualObjects([[o.subDictionaryValue objectAtIndex:0] testTrivial], @"Test1", @"1");
+    STAssertEqualObjects([[o.subDictionaryValue objectAtIndex:1] testTrivial], @"Test2", @"2");
+    STAssertEqualObjects([[o.subDictionaryValue objectAtIndex:2] testTrivial], @"Test3", @"3");
 }
 
 
@@ -228,11 +229,19 @@
 {
 	TestTestObject *o = [[TestTestObject alloc] init];
 	[o mapAttributesWithDictionary:@{ @"test_subarray" : @[ @{@"test_trivial" : @"Test1"}, @{@"test_trivial" : @"Test2"}, @{@"test_trivial" : @"Test3"}] }];
+    STAssertEqualObjects([[o.subArrayValue objectAtIndex:0] testTrivial], @"Test1", @"1");
+    STAssertEqualObjects([[o.subArrayValue objectAtIndex:1] testTrivial], @"Test2", @"2");
+    STAssertEqualObjects([[o.subArrayValue objectAtIndex:2] testTrivial], @"Test3", @"3");
+}
+
+- (void)testCollectionAsLegacyArraySubtype
+{
+    TestTestObject *o = [[TestTestObject alloc] init];
+    [o mapAttributesWithDictionary:@{ @"test_subarray" : @[ @{@"test_trivial" : @"Test1"}, @{@"test_trivial" : @"Test2"}, @{@"test_trivial" : @"Test3"}] }];
     STAssertEqualObjects([[o.subArrayValue objectAtIndex:0] testTrivial], @"Test1", nil);
     STAssertEqualObjects([[o.subArrayValue objectAtIndex:1] testTrivial], @"Test2", nil);
     STAssertEqualObjects([[o.subArrayValue objectAtIndex:2] testTrivial], @"Test3", nil);
 }
-
 
 - (void)testJsonMapping
 {

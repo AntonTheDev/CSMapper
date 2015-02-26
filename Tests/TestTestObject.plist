@@ -109,5 +109,14 @@
 		<key>collection_subtype</key>
 		<string>TestTestSubtype</string>
 	</dict>
+	<key>subArrayLegacyValue</key>
+	<dict>
+		<key>type</key>
+		<string>NSArray</string>
+		<key>key</key>
+		<string>test_subarray</string>
+		<key>array_subtype</key>
+		<string>TestTestSubtype</string>
+	</dict>
 </dict>
 </plist>

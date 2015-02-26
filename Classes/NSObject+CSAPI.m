@@ -201,6 +201,11 @@ static NSString * const CSMappingDefaultKey = @"default";
 				outputValue = [(id<CSMapper>)mapperClass transformValue:inputValue];
 			}
 			
+            if([propertyName isEqualToString:@"subDictionaryValue"])
+            {
+                NSLog(@"STOP");
+            }
+            
 			[self setValue:outputValue forKey:propertyName];
 		}
 	}
@@ -267,7 +272,6 @@ static NSMutableDictionary *mappingCache = NULL;
 		
 		return (NSNumber *)self;
 	} else {
-		
 		return nil;
 	}
 }
